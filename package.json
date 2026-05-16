@@ -4,16 +4,22 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
+    "predev": "npm run compile:images",
     "dev": "vite",
+    "compile:images": "node scripts/compile-images.mjs",
+    "prebuild": "npm run compile:images",
     "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
     "@vitejs/plugin-react": "latest",
-    "vite": "latest",
+    "gsap": "latest",
+    "marked": "^18.0.3",
     "react": "latest",
     "react-dom": "latest",
-    "gsap": "latest"
+    "vite": "latest"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "sharp": "^0.34.5"
+  }
 }

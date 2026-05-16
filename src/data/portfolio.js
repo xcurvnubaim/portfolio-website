@@ -2,18 +2,19 @@ export const profile = {
   name: "Mochammad Zharif Asyam Marzuqi",
   logo: "Zharif.",
   roles: ["Cloud Software Engineer", "AI Researcher"],
-  tagline: "Architecting resilient cloud systems and advancing spatiotemporal deep learning.",
+  tagline: "An engineer driven by curiosity and exploration, especially at the intersection of technology, data, and the environment.",
   socials: [
-    { label: "GitHub", href: "https://github.com", icon: "github" },
-    { label: "LinkedIn", href: "https://linkedin.com", icon: "linkedin" },
-    { label: "Email", href: "mailto:zharif@example.com", icon: "mail" }
+    { label: "GitHub", href: "https://github.com/xcurvnubaim", icon: "github" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/mochammad-zharif-asyam-marzuqi", icon: "linkedin" },
+    { label: "Email", href: "mailto:zhariffmarzuqi@gmail.com", icon: "mail" }
   ]
 };
 
 export const navItems = [
-  { label: "About", href: "#about" },
-  { label: "Experience", href: "#experience" },
-  { label: "Projects", href: "#projects" }
+  { label: "About", href: "/#about" },
+  { label: "Experience", href: "/#experience" },
+  { label: "Organization", href: "/#organization" },
+  { label: "Projects", href: "/#projects" }
 ];
 
 export const about = [
@@ -42,22 +43,52 @@ export const experience = [
   }
 ];
 
-export const projects = [
+export const organizations = [
   {
-    title: "SAI Simulations Validation",
-    description: "Handled large-scale climate data preparation and robust bias correction.",
-    tags: ["Python", "PyTorch", "AWS"]
+    date: "2024 - 2026",
+    role: "Laboratory Administrator",
+    name: "Intelligent Computing and Vision Laboratory",
+    description: "Served as a Teaching Assistant and directed daily laboratory operations, encompassing community outreach, faculty research support, student training programs, and comprehensive resource allocation.",
+    tags: ["Leadership", "Collaboration", "Machine Learning"]
   },
+  {
+    date: "2024 - 2025",
+    role: "Curriculum Software Engineer",
+    name: "Google Developer Group On Campus ITS",
+    description: "Designed web development curricula and facilitated software engineering tech talks, successfully engaging an audience of over 200 students.",
+    tags: ["Community", "Events", "Web Development"]
+  },
+  {
+    date: "2024",
+    role: "Deputy Head of Research and Development Bureau",
+    name: "Himpunan Mahasiswa Teknik Computer Informatika ITS",
+    description: "Led research initiatives and authored bulletin publications focused on entrepreneurship.",
+    tags: ["Leadership", "Research", "Entrepreneurship"]
+  },
+];
+
+export const projects = [
+  // {
+  //   title: "SAI Simulations Validation",
+  //   slug: "sai-simulations-validation",
+  //   description: "Handled large-scale climate data preparation and robust bias correction.",
+  //   tags: ["Python", "Climate Science", "Data Engineering"],
+  //   markdown: "../content/projects/sai-simulations-validation.md"
+  // },
   {
     title: "CAPD Patient Tracking System",
+    slug: "capd-patient-tracking-system",
     description: "Built a monitoring app for dialysis patients, enabling remote supervision.",
-    tags: ["React", "Docker", "CI/CD"]
+    tags: ["React", "Docker", "Laravel", "Healthcare"],
+    markdown: "../content/projects/capd-patient-tracking-system.md"
   },
-  {
-    title: "Serverless Retailer Platform",
-    description: "Event-driven data pipelines and centralized Lambda authorizers.",
-    tags: ["AWS", "Golang", "Kafka"]
-  }
+  // {
+  //   title: "ITS ERP CRM SCM",
+  //   slug: "its-erp-crm-scm",
+  //   description: "Tested and validated ERP accounting module for full cost accounting compliance.",
+  //   tags: ["Node.js", "Docker", "ERP"],
+  //   markdown: "../content/projects/its-erp-crm-scm.md"
+  // }
 ];
 
 export const techStack = ["AWS", "Docker", "Golang", "Python", "PyTorch", "React", "Kafka", "CI/CD"];

@@ -124,14 +124,100 @@ function animateCollection(selector, fromVars, toVars) {
       delay: index * 0.1,
       scrollTrigger: {
         trigger: element,
-        start: "top 90%"
+        start: "top 88%"
       }
     });
   });
 }
 
+function initSectionEntryAnimations() {
+  document.querySelectorAll(".snap-section").forEach((section) => {
+    if (!section.classList.contains("hero")) {
+      gsap.fromTo(
+        section.querySelector(".section-inner"),
+        { autoAlpha: 0.2, y: 80, scale: 0.96 },
+        {
+          autoAlpha: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.9,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: section,
+            start: "top 72%",
+            toggleActions: "play none none reverse"
+          }
+        }
+      );
+    }
+  });
+}
+
+function initTimelineAnimation() {
+  const timeline = document.querySelector(".experience-timeline");
+
+  if (!timeline) {
+    return;
+  }
+
+  gsap.fromTo(
+    ".timeline-progress",
+    { scaleY: 0 },
+    {
+      scaleY: 1,
+      ease: "none",
+      scrollTrigger: {
+        trigger: timeline,
+        start: "top 68%",
+        end: "bottom 58%",
+        scrub: true
+      }
+    }
+  );
+
+  document.querySelectorAll(".experience-item").forEach((item) => {
+    const card = item.querySelector(".experience-card");
+    const marker = item.querySelector(".timeline-marker");
+
+    gsap.fromTo(
+      card,
+      { autoAlpha: 0, y: 36, scale: 0.96 },
+      {
+        autoAlpha: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.75,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: item,
+          start: "top 78%",
+          toggleActions: "play none none reverse"
+        }
+      }
+    );
+
+    gsap.fromTo(
+      marker,
+      { scale: 0.4, autoAlpha: 0.35 },
+      {
+        scale: 1,
+        autoAlpha: 1,
+        duration: 0.45,
+        ease: "back.out(2)",
+        scrollTrigger: {
+          trigger: item,
+          start: "top 78%",
+          toggleActions: "play none none reverse"
+        }
+      }
+    );
+  });
+}
+
 function initScrollAnimations() {
   gsap.registerPlugin(ScrollTrigger);
+  initSectionEntryAnimations();
+  initTimelineAnimation();
 
   document.querySelectorAll(".fade-in-section").forEach((section) => {
     gsap.fromTo(
@@ -150,30 +236,7 @@ function initScrollAnimations() {
     );
   });
 
-  document.querySelectorAll(".divider-fill").forEach((divider) => {
-    gsap.fromTo(
-      divider,
-      { width: "0%" },
-      {
-        width: "100%",
-        duration: 1.5,
-        ease: "power3.inOut",
-        scrollTrigger: {
-          trigger: divider.parentElement,
-          start: "top 85%"
-        }
-      }
-    );
-  });
-
-  animateCollection(".experience-item", { y: 20, opacity: 0 }, {
-    y: 0,
-    opacity: 1,
-    duration: 0.8,
-    ease: "power3.out"
-  });
-
-  animateCollection(".project-card", { y: 30, opacity: 0 }, {
+  animateCollection(".project-card, .organization-card", { y: 30, opacity: 0 }, {
     y: 0,
     opacity: 1,
     duration: 0.8,
