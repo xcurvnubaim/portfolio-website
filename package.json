@@ -9,7 +9,8 @@
     "compile:images": "node scripts/compile-images.mjs",
     "prebuild": "npm run compile:images",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "npm run build && wrangler dev",
+    "deploy": "npm run build && wrangler deploy"
   },
   "dependencies": {
     "@vitejs/plugin-react": "latest",
@@ -20,6 +21,8 @@
     "vite": "latest"
   },
   "devDependencies": {
-    "sharp": "^0.34.5"
+    "@cloudflare/vite-plugin": "^1.37.1",
+    "sharp": "^0.34.5",
+    "wrangler": "^4.92.0"
   }
 }
