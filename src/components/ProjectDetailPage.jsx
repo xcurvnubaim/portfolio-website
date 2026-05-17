@@ -1,12 +1,44 @@
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { projects } from "../data/portfolio.js";
 import { markdownToHtml } from "../lib/markdown.js";
-import { projectMarkdown } from "../lib/projectMarkdown.js";
+import { loadProjectMarkdown } from "../lib/projectMarkdown.js";
 
 export default function ProjectDetailPage({ slug }) {
   const project = projects.find((item) => item.slug === slug);
-  const markdown = project ? projectMarkdown[project.markdown] || "" : "";
+  const [markdown, setMarkdown] = useState("");
+  const [status, setStatus] = useState("idle");
   const html = useMemo(() => markdownToHtml(markdown, project?.markdown), [markdown, project?.markdown]);
+
+  useEffect(() => {
+    let isCurrent = true;
+
+    if (!project) {
+      setMarkdown("");
+      setStatus("idle");
+      return () => {
+        isCurrent = false;
+      };
+    }
+
+    setMarkdown("");
+    setStatus("loading");
+
+    loadProjectMarkdown(project.markdown)
+      .then((content) => {
+        if (!isCurrent) return;
+        setMarkdown(content);
+        setStatus("loaded");
+      })
+      .catch(() => {
+        if (!isCurrent) return;
+        setMarkdown("");
+        setStatus("error");
+      });
+
+    return () => {
+      isCurrent = false;
+    };
+  }, [project]);
 
   if (!project) {
     return (
@@ -32,7 +64,15 @@ export default function ProjectDetailPage({ slug }) {
             {project.tags.map((tag) => <li className="project-tag" key={tag}>{tag}</li>)}
           </ul>
         </header>
-        <div className="project-detail markdown-content" dangerouslySetInnerHTML={{ __html: html }} />
+        {status === "loading" && (
+          <p className="detail-summary">Loading project details...</p>
+        )}
+        {status === "error" && (
+          <p className="detail-summary">Project details could not be loaded.</p>
+        )}
+        {status === "loaded" && (
+          <div className="project-detail markdown-content" dangerouslySetInnerHTML={{ __html: html }} />
+        )}
       </article>
     </main>
   );
