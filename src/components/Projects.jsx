@@ -9,16 +9,16 @@ export default function Projects() {
         <div className="projects-grid">
           {projects.map((project) => (
             <article className="project-card" key={project.title}>
-              <div className="project-header">
-                <h3 className="project-title">{project.title}</h3>
-                <a href={`/projects/${project.slug}`} rel="noopener noreferrer">
+              <a href={`/projects/${project.slug}`} rel="noopener noreferrer" style={{ textDecoration: 'none', textDecorationLine: 'none' }}>
+                <div className="project-header">
+                  <h3 className="project-title">{project.title}</h3>
                   <ExternalIcon />
-                </a>
-              </div>
-              <p className="project-desc">{project.description}</p>
-              <ul className="project-tags" aria-label="Project technologies">
-                {project.tags.map((tag) => <li className="project-tag" key={tag}>{tag}</li>)}
-              </ul>
+                </div>
+                <p className="project-desc">{project.description}</p>
+                <ul className="project-tags" aria-label="Project technologies">
+                  {project.tags.map((tag) => <li className="project-tag" key={tag}>{tag}</li>)}
+                </ul>
+              </a>
             </article>
           ))}
         </div>
