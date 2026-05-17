@@ -88,7 +88,21 @@ export const projects = [
   //   description: "Tested and validated ERP accounting module for full cost accounting compliance.",
   //   tags: ["Node.js", "Docker", "ERP"],
   //   markdown: "../content/projects/its-erp-crm-scm.md"
-  // }
+  // },
+  {
+    title: "UKM Expo 2024 Website",
+    slug: "ukm-expo-2024-website",
+    description: "Developed a backend service for the UKM Expo 2024 event, providing a platform for event information and registration.",
+    tags: ["Golang", "Web Development", "Xendit"],
+    markdown: "../content/projects/ukm-expo-2024-website.md"
+  },
+  {
+    title: "Ini Lho ITS 2024 Website",
+    slug: "ini-lho-its-2024-website",
+    description: "Developed a backend service for the Ini Lho ITS 2024 event, providing a platform for event information and registration.",
+    tags: ["Node.js", "Web Development", "Midtrans"],
+    markdown: "../content/projects/ini-lho-its-2024-website.md"
+  },
 ];
 
 export const techStack = ["AWS", "Docker", "Golang", "Python", "PyTorch", "React", "Kafka", "CI/CD"];
